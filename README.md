@@ -23,40 +23,40 @@ A lightweight Python tool that scans log files for security-relevant patterns (e
 (Optional, for CSV export)  
 ```bash
 pip3 install pandas
+```
 📦 Setup & Installation
 Clone the repo
 
-bash
-Copy code
+```bash
 git clone https://github.com/elevelin/log-parser.git
 cd log-parser
+```
+
 (Optional) Create a virtual environment
 
-bash
-Copy code
+```bash
 python3 -m venv venv
 source venv/bin/activate
+```
+
 Install dependencies (only if adding CSV export)
 
-bash
-Copy code
+```bash
 pip3 install pandas
+```
 ▶️ Usage
 Parse a sample log
-bash
-Copy code
+```bash
 python3 log_parser.py --path sample.log
-Parse a real log file
-bash
-Copy code
+```
+🔍 Parse a real log file (on Linux):
+```bash
 python3 log_parser.py --path /var/log/auth.log
-Specify a custom output path
-bash
-Copy code
-python3 log_parser.py --path sample.log --output reports/my_report.json
+```
+Note: This works only on Linux systems that have an auth.log file. macOS users should use sample.log instead.
+
 📁 Directory Structure
-perl
-Copy code
+```perl
 log-parser/
 ├── log_parser.py    # Main script
 ├── sample.log       # Example log for testing
@@ -64,8 +64,10 @@ log-parser/
 ├── logs/            # (Ignored) any raw logs you drop here
 ├── README.md
 └── .gitignore       # Excludes logs/ and reports/
+```
 🔧 Extending the Tool
-Add new patterns
+
+## Add new patterns
 
 Open log_parser.py
 
@@ -73,22 +75,24 @@ Add a new re.compile(...) and counter in parse_log()
 
 Export to CSV
 
-python
-Copy code
+```python
 import pandas as pd
 df = pd.DataFrame.from_dict(results, orient="index", columns=["count"])
 df.to_csv("reports/summary.csv")
-Integrate alerts
+```
+
+## Integrate alerts
 
 Print warnings on threshold breaches
 
 Hook into Slack/email using requests or yagmail
 
 🎯 Purpose & Benefits
-Security Awareness: Quickly spot brute-force or repeated errors
 
-Scripting Skills: Demonstrates Python CLI scripting & regex
+-Security Awareness: Quickly spot brute-force or repeated errors
 
-Portfolio-Ready: No secrets, easy to review, clear output
+-Scripting Skills: Demonstrates Python CLI scripting & regex
+
+-Portfolio-Ready: No secrets, easy to review, clear output
 
 
